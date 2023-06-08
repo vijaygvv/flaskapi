@@ -18,10 +18,17 @@ def hello():
 
 
 
-@app.route('/xlx')
-def xlx():
-    dataframe1 = pd.read_excel('login-data.xlsx')
-    print(dataframe1)
-    return ''
+@app.route('/logdata')
+def logdata():
+    dataframe = pd.read_excel('data/login-data.xlsx')
+    context = dataframe.to_json()
+    return context
 
+
+
+@app.route('/quarter')
+def quarter():
+    dataframe = pd.read_csv('data/march-quarter.csv')
+    context = dataframe.to_json()
+    return context
 
